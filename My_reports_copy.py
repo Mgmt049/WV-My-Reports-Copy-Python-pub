@@ -23,10 +23,18 @@ import sys
 #12/10/2022 - added a authentication loop
 #12/25/2022 - moved any network/domain strings to constants
 
-#Constants:
-LDAP_search_base = "OU=E&P-Users,DC=ihess,DC=com"
-AD_domain = "ihess.com"
-logon_domain = "ihess\\"
+#############################################################################################
+#Constants to populate before execution:
+#############################################################################################
+## LDAP_search_base: populate with LDAP search base - ou: organizational unit, o: organization, c: country, dc: domain
+##Example: "OU=<organizational unit/container>,DC=<domain>,DC=com"
+##AD_domain: populate as "<domain>.com"
+##logon_domainL populate as "<domain>\\"
+#############################################################################################
+LDAP_search_base = ""
+AD_domain = ""
+logon_domain = ""
+#############################################################################################
 
 def read_excel( path ):
     try:
@@ -217,8 +225,6 @@ def Get_Filenames( Report_type ):
     root = tk.Tk()
     root.wm_attributes('-topmost', 1)
     root.withdraw()
-
-    #TO DO: INSERT AN IF STATEMENT CONTROL TO EITHER SELECT EXCEL FILE OR A BUNCH OF REPORT FILES!!!!!!!!!!!
 
     if Report_type == "Report":
         #askopenfilenames() returns a tuple of strings, not a string
