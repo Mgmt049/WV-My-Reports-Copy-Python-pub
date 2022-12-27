@@ -191,32 +191,32 @@ def Tokenize_Paths( report_paths ):
     #end function
 
 
-def Get_Reports():
+# def Get_Reports():
 
-    #https://stackoverflow.com/questions/1406145/how-do-i-get-rid-of-python-tkinter-root-window
-    #root = tkinter.Tk()
-    root = tk.Tk()
-    root.withdraw()
-    root.wm_attributes('-topmost', 1)
+#     #https://stackoverflow.com/questions/1406145/how-do-i-get-rid-of-python-tkinter-root-window
+#     #root = tkinter.Tk()
+#     root = tk.Tk()
+#     root.withdraw()
+#     root.wm_attributes('-topmost', 1)
     
-    #askopenfilenames() returns a tuple of strings, not a string
-    report_path = askopenfilenames(
-        initialdir='\\\\AW1DSAPWVWD01\\c$\\Peloton\\My Reports\\WV10 My Reports\\',
-        filetypes=[
-            ("AFR", "*.afr"), ("AFQ", "*.afq"),
-            ("AFR", "*.afr"), ("AFQ", "*.afq"), ("AFSQL", "*.afsql"), ("AFM", "*.afm"), ("AFMXL", "*.afmxl"),
-            ("AFRXL", "*.afrxl"), ("XLT", "*.xlt"), ("XLTM", "*.xltm"), ("XLTX", "*.xltx")
-            ]
-        )
+#     #askopenfilenames() returns a tuple of strings, not a string
+#     report_path = askopenfilenames(
+#         initialdir='\\\\AW1DSAPWVWD01\\c$\\Peloton\\My Reports\\WV10 My Reports\\',
+#         filetypes=[
+#             ("AFR", "*.afr"), ("AFQ", "*.afq"),
+#             ("AFR", "*.afr"), ("AFQ", "*.afq"), ("AFSQL", "*.afsql"), ("AFM", "*.afm"), ("AFMXL", "*.afmxl"),
+#             ("AFRXL", "*.afrxl"), ("XLT", "*.xlt"), ("XLTM", "*.xltm"), ("XLTX", "*.xltx")
+#             ]
+#         )
     
-    if (report_path):
-        return report_path 
-    else:
-        print("no report file was selected")
-    sys.exit()
+#     if (report_path):
+#         return report_path 
+#     else:
+#         print("no report file was selected")
+#     sys.exit()
     
-    return
-    #end function
+#     return
+#     #end function
 
 def Get_Filenames( Report_type ):
 
