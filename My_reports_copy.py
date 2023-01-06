@@ -44,19 +44,18 @@ def read_excel( path ):
         columns = columns[::-1]
         df = df[columns]
         
-        #https://pythonbasics.org/pandas-iterate-dataframe/
-        #loop through each column and row in the dataframe and find email strings
-        for column_name, item in df.iteritems():
-            if "@" in str(item):
-                
-                #Each column in a DataFrame is a Panas Series. As a single column is selected, the returned object is a Series.
-                #you can use double brackets in order to return a DataFrame datatype, rather than a pandas Series
-                df = df[column_name] #this is a Series
-                #pass these columns as params within a dict using the DataFrame constructor
-                df = pd.DataFrame({'email':df.values})
-                #https://thispointer.com/drop-first-row-of-pandas-dataframe-3-ways/
-                if ("@" not in str(df['email'][0])): df = df.iloc[1: , : ] #"iloc" takes a slice of a dataframe, the first record is not a header record so delete it
-                return df
+        for columns in df:  #"columns" is just an interator/integer and not the object itself..
+        #Each column in a DataFrame is a Pandas Series. As a single column is selected, the returned object is a Series.
+        #you can use double brackets in order to return a DataFrame datatype, rather than a pandas Series
+
+            if df[columns].str.find('@').any():  
+                df[columns].name = 'email'    #if any of the characters are an @, then we have found the email column
+                df = pd.DataFrame(df[columns])  #remove all other columns from the dataframe
+                #https://thispointer.com/drop-first-row-of-pandas-dataframe-3-ways/                
+                if( "@" not in str(df.iloc[0:1]) ): #the first element in this DataFrame is NOT an email
+                    df = df.iloc[1: ] #"iloc" takes a slice of a dataframe, the first record is not a header record so delete it
+                    break  
+        return df
 
     except FileNotFoundError as e:
         print("this the FNF error", e)
